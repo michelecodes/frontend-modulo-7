@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <form id="myForm">
+            <label for="notaProva">Nota da prova (1-10):</label>
+            <input type="number" id="notaProva" name="notaProva" min="1" max="10" required>
+        
+            <label for="notaAtividade">Nota da atividade (1-10):</label>
+            <input type="number" id="notaAtividade" name="notaAtividade" min="1" max="10" required>
+        
+            <button type="button" onclick="validarFormulario()">Submeter</button>
+        </form>
+        
+        <div id="result"></div>
+        
+        <script>
+            function validarFormulario() {
+                var notaProva = document.getElementById('notaProva').value;
+                var notaAtividade = document.getElementById('notaAtividade').value;
+                var resultDiv = document.getElementById('result');
+            
+                // Convertendo os valores para números
+                notaProva = parseFloat(notaProva);
+                notaAtividade = parseFloat(notaAtividade);
+            
+                // Verificando se a média é maior que 7
+                var media = (notaProva + notaAtividade) / 2;
+            
+                if (media > 7) {
+                    resultDiv.innerHTML = '<p>Aprovado! Média: ' + media.toFixed(2) + '</p>';
+                } else {
+                    resultDiv.innerHTML = '<p>Reprovado. Média: ' + media.toFixed(2) + '</p>';
+                }
+            }
+        </script>
+    </body>
+</html>
